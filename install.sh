@@ -92,4 +92,4 @@ echo "Привилегии для базы $DB_NAME переданы польз�
 
 print_green "Запуск приложения.."
 
-env $(cat .env | xargs) pm2 start ./dist/server.js
+pm2 start dist/server.js --interpreter=`which node`
