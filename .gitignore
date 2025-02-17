@@ -1,0 +1,15 @@
+/backend/node_modules
+/backend/dist
+/backend/.env
+/backend/static
+/backend/package-lock.json
+
+/frontend/node_modules
+/frontend/dist
+/frontend/.env
+/frontend/.eslintrc.cjs
+/frontend/package-lock.json
+/frontend/README.md
+/node_modules
+*.tar
+.env
