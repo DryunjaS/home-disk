@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Button, TextField, Box, Modal, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-const ModalRename = ({ open, setOpen, update, getCatalogs }) => {
+const ModalRename = ({
+  open,
+  setOpen,
+  update,
+  getCatalogs,
+  setSelectedRows,
+}) => {
   const [newName, setNewName] = useState("");
 
   const handleClose = () => {
@@ -15,6 +21,7 @@ const ModalRename = ({ open, setOpen, update, getCatalogs }) => {
       update(newName);
       handleClose();
       getCatalogs("");
+      setSelectedRows([]);
     }
   };
 

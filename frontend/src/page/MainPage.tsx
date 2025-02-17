@@ -18,6 +18,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Icatalog } from "../type";
 import ModalRename from "../modal/ModalRename";
 import ModalDelete from "../modal/ModalDelete";
+import Cookie from "js-cookie";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "Номер", width: 100 },
@@ -210,7 +211,11 @@ const MainPage = () => {
   };
 
   const handleDelete = async () => {
-    if (!selectedRows.length) return;
+    if (
+      !selectedRows.length &&
+      Cookie.get("role") !== import.meta.env.VITE_ROLE_ADMIN
+    )
+      return;
 
     const itemsToDelete = selectedRows.map((row) =>
       `${url}/${row}`.replace(/^\/static/, "")
@@ -389,11 +394,15 @@ const MainPage = () => {
             gap: 1,
           }}
         >
-          {selectedRows.length >= 1 && (
-            <Button variant="outlined" onClick={() => setOpenModalDelete(true)}>
-              Удалить
-            </Button>
-          )}
+          {Cookie.get("role") === import.meta.env.VITE_ROLE_ADMIN &&
+            selectedRows.length >= 1 && (
+              <Button
+                variant="outlined"
+                onClick={() => setOpenModalDelete(true)}
+              >
+                Удалить
+              </Button>
+            )}
           {selectedRows.length === 1 && (
             <Button variant="outlined" onClick={() => setOpenModal(true)}>
               Изменить
@@ -413,6 +422,7 @@ const MainPage = () => {
         setOpen={setOpenModal}
         update={renameItem}
         getCatalogs={getCatalogs}
+        setSelectedRows={setSelectedRows}
       />
       <ModalDelete
         open={openModalDelete}
