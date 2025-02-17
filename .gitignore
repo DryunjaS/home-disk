@@ -1,6 +1,5 @@
 /backend/node_modules
 /backend/dist
-/backend/static
 /backend/package-lock.json
 
 /frontend/node_modules
