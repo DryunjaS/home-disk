@@ -49,5 +49,5 @@ pm2 stop server
 Для запуска приложения команда:
 
 ```bash
-pm2 start server
+pm2 start dist/server.js --interpreter=`which node`
 ```
