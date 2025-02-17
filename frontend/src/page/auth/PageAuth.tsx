@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../http/userAPI";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -7,15 +7,11 @@ import TextField from "@mui/material/TextField";
 import { Button, CircularProgress, Typography } from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
 import { toggleTheme } from "../../store/SettingSlice";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import NightlightIcon from "@mui/icons-material/Nightlight";
 import { blue } from "@mui/material/colors";
-import { RootState } from "../../store";
 
 const PageAuth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const theme = useSelector((state: RootState) => state.settings.theme);
 
   const [loading, setLoading] = React.useState(false);
   const [isError, setIsError] = useState(false);
@@ -46,7 +42,7 @@ const PageAuth = () => {
     }
   };
 
-  const isDarkTheme = theme === "dark";
+  const isDarkTheme = false;
   const boxStyles = {
     display: "flex",
     flexDirection: "column",
@@ -184,9 +180,7 @@ const PageAuth = () => {
           minWidth: "auto",
           padding: "8px",
         }}
-      >
-        {theme === "light" ? <WbSunnyIcon /> : <NightlightIcon />}
-      </Button>
+      ></Button>
     </Box>
   );
 };
