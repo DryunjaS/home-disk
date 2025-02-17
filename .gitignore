@@ -9,5 +9,4 @@
 /frontend/package-lock.json
 /frontend/README.md
 /node_modules
-*.tar
-.env
+
